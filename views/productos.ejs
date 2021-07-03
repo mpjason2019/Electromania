@@ -1,0 +1,42 @@
+<%- include('partials/head')  %> 
+<body>
+ 
+        <%- include('partials/header')  %> 
+        <%- include('partials/navbar')  %> 
+<div class="contenedor-productos"> 
+        <div class="pre-main">
+        <h2 class="titulo-productos">Todos los productos</h2>
+        <% if (locals.isLogged && locals.userLogged.idPerfil==1) { %>
+        <a href="/productos/create" class="button-edit">CREAR PRODUCTO</a>
+        <% } %>
+        </div>
+      
+        <main class="producto">    
+        
+            <% for (producto of productos) { %> 
+            <% let finalPrice=producto.descuento ? (producto.precio - producto.precio * producto.descuento / 100).toFixed(0) : producto.precio;%>
+                <section class="ofertas-productos">
+                            <article>
+                                <a href="/productos/productDetail/<%=producto.id%>">
+                                    <img src="/images/products/<%= producto.rutaImagen %>" alt="">
+                                    <div class="productos2">
+                                        <hr>
+                                        <p class="descripcion1"> <%= producto.nombre %> </p>
+                                        <p class="descripcion2"> <%- producto.descuento ? `<span>${producto.descuento}% OFF</span>` : '' %>  </p> 
+                                        <p class="precio">$<%= toThousand(finalPrice) %></p>
+                                        <h4 class="descripcion3">Ahora 12</h4>
+                                    </div>  
+                                </a>      
+                            </article>
+        
+                </section>
+        
+            <% } %> 
+        
+        </main>
+</div> 
+    <hr>    
+    <%- include('partials/footer')  %> </body>
+</body>
+
+</html> 

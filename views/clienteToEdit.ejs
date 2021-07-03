@@ -1,0 +1,124 @@
+<%- include('partials/head')  %> 
+
+<body class="register-page">
+  <header>
+    <div class="top-header-login">
+        
+        <h2 class="nombre-login">electromania</h2>
+        <div class="logo-login">
+            <a href="/"><img src="/images/favicon.JPG" class="logo"></a>
+        </div>
+   </div> 
+
+  </header>
+    <div class="container">
+        <div class="login-container">
+          <div class="register">
+            <h1 class="register-page">Edicion de clientes</h1>
+
+            <form class="form-register" action="/usuarios/<%= clienteToEdit.id %>/edit?_method=PUT"  method="POST" >
+              
+              <h3 class="register-page">Es admin?</h3>
+              <select name="idPerfil">
+<option value="1" <%= clienteToEdit.idPerfil == 1?"selected":"" %>>Administrador</option>
+<option value="2" <%= clienteToEdit.idPerfil == 2?"selected":"" %>>Usuario</option>
+
+              </select>
+              
+              
+              
+              
+              <h3 class="register-page">Nombre</h3>
+              <input 
+                class="insert-register <%= locals.errors && errors.firstName ? 'is-invalid' : null %>"
+                value="<%= clienteToEdit.nombre %>"
+                type="text" 
+                name="nombre"
+              >
+                
+              <h3 class="register-page">Apellido</h3>
+              <input 
+                class="insert-register <%= locals.errors && errors.lastName ? 'is-invalid' : null %>"
+                value="<%= clienteToEdit.apellido%>"
+                type="text" 
+                name="apellido" 
+                
+              >
+              <h3 class="register-page">Email</h3>
+              <input 
+                class="insert-register <%= locals.errors && errors.email ? 'is-invalid' : null %>"
+                value="<%= clienteToEdit.email %>"
+                type="email" 
+                name="email" 
+              >  
+              <h3 class="register-page">Contraseña</h3>
+              <input 
+                class="insert-register <%= locals.errors && errors.password ? 'is-invalid' : null %>"
+                type="password" 
+                name="password" 
+                value="<%= clienteToEdit.password %>"
+                
+              > 
+              <h3 class="register-page">Telefono</h3>
+              <input 
+                class="insert-register"
+                value="<%= clienteToEdit.telefono %>"
+                type="tel" 
+                name="telefono" 
+              >  
+              <h3 class="register-page">Celular</h3>
+              <input 
+                class="insert-register"
+                value="<%= clienteToEdit.celular %>"
+                type="tel" 
+                name="celular" 
+              >  
+              <h3 class="register-page">Domicilio</h3>
+              <input 
+                class="insert-register"
+                value="<%= clienteToEdit.domicilio %>"
+                type="text" 
+                name="domicilio" 
+              >
+              <h3 class="register-page">Codigo Postal</h3>
+              <input 
+                class="insert-register"
+                value="<%= clienteToEdit.codigoPostal %>"
+                type="number" 
+                name="codigoPostal" 
+              >
+              <h3 class="register-page">Provincia</h3>
+              <input 
+                class="insert-register"
+                value="<%= clienteToEdit.provincia%>"
+                type="text" 
+                name="provincia" 
+              > 
+              <h3 class="register-page">Localidad</h3>
+              <input 
+                class="insert-register"
+                value="<%= clienteToEdit.localidad %>"
+                type="text" 
+                name="localidad" 
+              >      
+              <br>
+              <input class="boton-update" type="submit" class="submit" value="Actualizar Cliente">
+            </form>    
+            <br>
+            <diV class="delete-c">
+              <form action="/usuarios/<%= clienteToEdit.id %>/edit?_method=DELETE" method="POST" style="display: inline-flex" class="deletec">
+                <div class="edit-delete">    
+          
+                  <button type="submit" class="action-button delete">ELIMINAR CLIENTE</button>
+                </div>
+            
+              </form>
+            </diV>       
+            
+            <br>
+           </div>
+        </div>
+    </div> 
+    <%- include('partials/footer')  %>   
+</body>
+</html>

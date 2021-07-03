@@ -1,0 +1,47 @@
+<%- include('partials/head')  %> 
+<body>
+ 
+        <%- include('partials/header')  %> 
+        <%- include('partials/navbar')  %> 
+<div class="contenedor-productos"> 
+        <div class="pre-main">
+        <h2 class="titulo-productos">Resultados de la búsqueda: <%= search %></h2>
+        </div>
+      
+        <main class="producto">    
+        
+            <% if (products.length) { %>
+			 
+				<% for (product of products) { 
+					let finalPrice=product.discount ? (product.price - product.price * product.discount / 100).toFixed(0) : product.price; 
+				%>
+                <section class="ofertas-productos">
+                            <article>
+                                <a href="/productos/productDetail/<%=product.id%>">
+                                    <img src="/images/products/<%= product.image %>" alt="">
+                                    <div class="productos2">
+                                        <hr>
+                                        <p class="descripcion1"> <%= product.name %> </p>
+                                        <p class="descripcion2"> <%- product.discount ? `<span>${product    .discount}% OFF</span>` : '' %>  </p> 
+                                        <p class="precio">$<%= toThousand(finalPrice) %></p>
+                                        <h4 class="descripcion3">Ahora 12</h4>
+                                    </div>  
+                                </a>      
+                            </article>
+        
+                </section>
+        
+            <% } %> 
+            <% } else { %>
+				<div class="titulo-productos">
+					<h2 class="products-title" style="color: tomato;">No hay productos que coincidan con esa búsqueda</h2>
+				</div>
+			<% } %>
+        
+        </main>
+</div> 
+    <hr>    
+    <%- include('partials/footer')  %> </body>
+</body>
+
+</html> 

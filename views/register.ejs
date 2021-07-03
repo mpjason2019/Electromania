@@ -1,0 +1,173 @@
+<%- include('partials/head')  %> 
+
+<body class="register-page">
+  <header>
+    <div class="top-header-login">
+        
+        <h2 class="nombre-login">electromania</h2>
+        <div class="logo-login">
+            <a href="/"><img src="/images/favicon.JPG" class="logo"></a>
+        </div>
+   </div> 
+
+  </header>
+    <div class="container">
+        <div class="login-container">
+          <div class="register">
+            <h1 class="register-page">Registrate</h1>
+            <h4 class="register-page">¿Ya tenés cuenta?<a  class="ingresa" href="/usuarios/login"> Ingresá aqui</a></h4>
+            <br>
+            <% if (locals.errors && errors.length > 0 ) { %>
+            <% errors.forEach(error=>{%><p> <%=error.msg%> </p><%})%> 
+            <% } %>
+            <form class="form-register" action="/usuarios/register" method="POST" enctype="multipart/form-data">
+              <ul class= "errores"></ul> 
+              
+              <h3 class="register-page">Nombre</h3>
+             
+              <input 
+
+                id="nombre"
+                class="insert-register <%= locals.errors && errors.firstName ? 'is-invalid' : null %>"
+                value="<%= locals.oldData ? oldData.firstName : null %>"
+                type="text" 
+                name="nombre"
+              >
+                <% if (locals.errors && errors.firstName) { %>
+                  <div class="text-danger">
+                      <%= errors.firstName.msg %> 
+                  </div>
+              <% } %>
+              <h3 class="register-page">Apellido</h3>
+              <input 
+                id="apellido"
+                class="insert-register <%= locals.errors && errors.lastName ? 'is-invalid' : null %>"
+                value="<%= locals.oldData ? oldData.lastName : null %>"
+                type="text" 
+                name="apellido" 
+                
+              >
+              <% if (locals.errors && errors.lastName) { %>
+                <div class="text-danger">
+                    <%= errors.lastName.msg %> 
+                </div>
+            <% } %>
+              <h3 class="register-page">Email</h3>
+              <input 
+
+                 id="email"
+                class="insert-register <%= locals.errors && errors.email ? 'is-invalid' : null %>"
+                value="<%= locals.oldData ? oldData.email : null %>"
+                type="email" 
+                name="email" 
+              >  
+              <% if (locals.errors && errors.email) { %>
+                <div class="text-danger">
+                    <%= errors.email.msg %> 
+                </div>
+            <% } %>
+              <h3 class="register-page">Contraseña</h3>
+              <input 
+              id="password"
+                class="insert-register <%= locals.errors && errors.password ? 'is-invalid' : null %>"
+                type="password" 
+                name="password" 
+                
+              > 
+              <% if (locals.errors && errors.password) { %>
+                <div class="text-danger">
+                  <%= errors.password.msg %>
+                </div>
+              <% } %>
+              <h3 class="register-page">Telefono</h3>
+              <input 
+              id="telefono"
+                class="insert-register"
+                type="tel" 
+                name="telefono" 
+               
+              >  
+              <h3 class="register-page">Celular</h3>
+              <input 
+              id="celular"
+                class="insert-register"
+                type="tel" 
+                name="celular" 
+                
+              >  
+              <h3 class="register-page">Domicilio</h3>
+              <input 
+                class="insert-register"
+                type="text" 
+                name="domicilio" 
+                
+              >
+              <h3 class="register-page">Codigo Postal</h3>
+              <input 
+                class="insert-register"
+                type="number" 
+                name="codigoPostal" 
+                
+              >
+              <h3 class="register-page">Provincia</h3>
+              <input 
+                class="insert-register"
+                type="text" 
+                name="provincia" 
+                
+              > 
+              <h3 class="register-page">Localidad</h3>
+              <input 
+                class="insert-register"
+                type="text" 
+                name="localidad"
+                
+              
+              
+                >    
+                
+                <!-- <h3 class="register-page">Avatar</h3>
+              <input 
+                class="insert-register"
+                type="file" 
+                name="avatar" 
+                id="avatar"
+                
+              
+              
+                >      <% if (locals.errors && errors.avatar) { %>
+                  <div class="text-danger">
+                    <%= errors.avatar.msg %>
+                  </div>
+                <% } %> -->
+              <br>
+              
+              <div class="boton-register">
+              <input class="boton-register" type="submit" class="submit" value="Crear cuenta">
+              </div>
+              <br>
+              <h3 class="register-page">O</h3>   
+              <br> 
+            </form>          
+            <section >
+                <div class="ctatrs">
+                    <div class="ctatrs2">
+                        <div class="cuentatrs">                        
+                            <a  href="#">Iniciar sesión con Facebook</a>                       
+                        </div>
+                    </div>
+                    <div class="ctatrs2">
+                        <div class="cuentatrs">                      
+                            <a  href="#">Iniciar sesión con Google</a>                        
+                        </div>
+                    </div>    
+                </div>
+            </section>
+            <br>
+           </div>
+        </div>
+    </div> 
+    <%- include('partials/footer')  %>   
+    <script src = "/js/validaciones.js"></script> 
+</body>
+</html>

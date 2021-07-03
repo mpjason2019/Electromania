@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Electromania</title>
+    <link  rel="icon" type="image/png" href="/images/favicon.JPG"  />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/d80f5cb230.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="/CSS/normalize.css">
+    <link rel="stylesheet" href="/CSS/styles.css">
+</head>
+
+<body class="edit-page">
+  <header>
+    <div class="top-header-login">
+        
+        <h2 class="nombre-login">electromania</h2>
+        <div class="logo-login">
+            <a href="/"><img src="/images/favicon.JPG" class="logo"></a>
+        </div>
+   </div> 
+
+  </header>
+    <div class="container">
+        <div class="login-container">
+          <div class="create-form">
+              <form class="form-register" action="/productos/<%= productToEdit.id %>?_method=PUT" method="POST" enctype="multipart/form-data">
+                <h3 class="register-page">Nombre del producto</h3>
+              <input class="insert-register" type="text" name="name" required placeholder="Nombre del producto" value="<%= productToEdit.nombre %>"> 
+              <h3 class="register-page">Precio</h3>
+              <input class="insert-register" type="text" name="price" required placeholder="Precio" value="<%= productToEdit.precio %>">
+              <h3 class="register-page">Descuento</h3>
+              <input class="insert-register" type="text" name="descuento" required placeholder="descuento" value="<%= productToEdit.descuento %>">
+                            
+              <h3 class="register-page">Descripcion</h3>
+              <div class="col-12">
+                <textarea name="description" id="description" class="form-input"> <%= productToEdit.descripcion%></textarea>
+              </div>
+              <h3 class="register-page">Stock</h3>
+              <input class="insert-register" type="text" name="stock" required value=<%= productToEdit.stock %>> 
+                <div>
+                  <input class="file" type="file" name="image" required value="<%= productToEdit.image %>">
+                </div>
+               <br>
+              <div class="boton-register">
+              <input class="boton-register" type="submit" class="submit" value="Actualizar producto">
+              </div>
+              <br> 
+            </form>          
+            <br>
+           </div>
+        </div>
+    </div>   
+</body>
+</html>
